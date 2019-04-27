@@ -6,7 +6,7 @@ public class Film {
 	private String title;
 	private String description;
 	private String releaseYear;
-	private String landId;
+	private String langId;
 	private String rentDur;
 	private String rentRate;
 	private int length;
@@ -19,14 +19,14 @@ public class Film {
 	}
 
 	
-	public Film(int id, String title, String description, String releaseYear, String landId, String rentDur, String rentRate,
+	public Film(int id, String title, String description, String releaseYear, String langId, String rentDur, String rentRate,
 			int length, double replaceCost, String rating, String specialFeat) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.releaseYear = releaseYear;
-		this.landId = landId;
+		this.langId = langId;
 		this.rentDur = rentDur;
 		this.rentRate = rentRate;
 		this.length = length;
@@ -60,20 +60,20 @@ public class Film {
 		this.description = description;
 	}
 
-	public String getYear() {
+	public String getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setYear(String year) {
-		this.releaseYear = year;
+	public void setReleaseYear(String releaseYear) {
+		this.releaseYear = releaseYear;
 	}
 
-	public String getLandId() {
-		return landId;
+	public String getLangId() {
+		return langId;
 	}
 
-	public void setLandId(String landId) {
-		this.landId = landId;
+	public void setLangId(String langId) {
+		this.langId = langId;
 	}
 
 	public String getRentDur() {
@@ -130,7 +130,7 @@ public class Film {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((landId == null) ? 0 : landId.hashCode());
+		result = prime * result + ((langId == null) ? 0 : langId.hashCode());
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + ((rentDur == null) ? 0 : rentDur.hashCode());
@@ -160,10 +160,10 @@ public class Film {
 			return false;
 		if (id != other.id)
 			return false;
-		if (landId == null) {
-			if (other.landId != null)
+		if (langId == null) {
+			if (other.langId != null)
 				return false;
-		} else if (!landId.equals(other.landId))
+		} else if (!langId.equals(other.langId))
 			return false;
 		if (length != other.length)
 			return false;
@@ -205,7 +205,7 @@ public class Film {
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", year=" + releaseYear + ", landId="
-				+ landId + ", rentDur=" + rentDur + ", rentRate=" + rentRate + ", length=" + length + ", replaceCost="
+				+ langId + ", rentDur=" + rentDur + ", rentRate=" + rentRate + ", length=" + length + ", replaceCost="
 				+ replaceCost + ", rating=" + rating + ", specialFeat=" + specialFeat + "]";
 	}
 

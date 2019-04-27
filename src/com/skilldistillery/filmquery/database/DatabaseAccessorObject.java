@@ -18,8 +18,41 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	@Override
 	public Film findFilmById(int filmId) {
+		Film film = null;
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pwd);
+			String sql = "SELECT id, title, description, release_year, language_id, rental_duration, ";
+			sql += " rental_rate, length, replacement_cost, rating, special_features " + " FROM film "
+					+ " WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				film = new Film();
+				film.setId(rs.getInt("id"));
+				film.setTitle(rs.getString("title"));
+				film.setDescription(rs.getString("description"));
+				film.setReleaseYear(rs.getString("release_year"));
+				film.setLangId(rs.getString("language_id"));
+				film.setRentDur(rs.getString("rental_duration"));
+				film.setRentRate(rs.getString("rental_rate"));
+				film.setLength(rs.getInt("length"));
+				film.setReplaceCost(rs.getDouble("replacement_cost"));
+				film.setRating(rs.getString("rating"));
+				film.setSpecialFeat(rs.getString("special_features"));
 
-		return null;
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+			if (film == null) {
+				System.out.println("No such actor id, please try again.");
+			}
+			return film;
+		} catch (SQLException e) {
+		}
+		return film;
+
 	}
 
 	@Override
