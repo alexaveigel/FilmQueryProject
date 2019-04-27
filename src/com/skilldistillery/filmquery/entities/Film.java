@@ -1,5 +1,7 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
+
 public class Film {
 
 	private int id;
@@ -13,14 +15,14 @@ public class Film {
 	private double replaceCost;
 	private String rating;
 	private String specialFeat;
-	
+	private List<Actor> cast;
+
 	public Film() {
 		super();
 	}
 
-	
-	public Film(int id, String title, String description, String releaseYear, String langId, String rentDur, String rentRate,
-			int length, double replaceCost, String rating, String specialFeat) {
+	public Film(int id, String title, String description, String releaseYear, String langId, String rentDur,
+			String rentRate, int length, double replaceCost, String rating, String specialFeat, List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -33,8 +35,8 @@ public class Film {
 		this.replaceCost = replaceCost;
 		this.rating = rating;
 		this.specialFeat = specialFeat;
+		this.cast = cast;
 	}
-
 
 	public int getId() {
 		return id;
@@ -124,15 +126,25 @@ public class Film {
 		this.specialFeat = specialFeat;
 	}
 
+	public List<Actor> getCast() {
+		return cast;
+	}
+
+	public void setCast(List<Actor> cast) {
+		this.cast = cast;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cast == null) ? 0 : cast.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((langId == null) ? 0 : langId.hashCode());
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
+		result = prime * result + ((releaseYear == null) ? 0 : releaseYear.hashCode());
 		result = prime * result + ((rentDur == null) ? 0 : rentDur.hashCode());
 		result = prime * result + ((rentRate == null) ? 0 : rentRate.hashCode());
 		long temp;
@@ -140,7 +152,6 @@ public class Film {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((specialFeat == null) ? 0 : specialFeat.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((releaseYear == null) ? 0 : releaseYear.hashCode());
 		return result;
 	}
 
@@ -153,6 +164,11 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
+		if (cast == null) {
+			if (other.cast != null)
+				return false;
+		} else if (!cast.equals(other.cast))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
@@ -171,6 +187,11 @@ public class Film {
 			if (other.rating != null)
 				return false;
 		} else if (!rating.equals(other.rating))
+			return false;
+		if (releaseYear == null) {
+			if (other.releaseYear != null)
+				return false;
+		} else if (!releaseYear.equals(other.releaseYear))
 			return false;
 		if (rentDur == null) {
 			if (other.rentDur != null)
@@ -194,19 +215,17 @@ public class Film {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (releaseYear == null) {
-			if (other.releaseYear != null)
-				return false;
-		} else if (!releaseYear.equals(other.releaseYear))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", year=" + releaseYear + ", landId="
-				+ langId + ", rentDur=" + rentDur + ", rentRate=" + rentRate + ", length=" + length + ", replaceCost="
-				+ replaceCost + ", rating=" + rating + ", specialFeat=" + specialFeat + "]";
+		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
+				+ ", langId=" + langId + ", rentDur=" + rentDur + ", rentRate=" + rentRate + ", length=" + length
+				+ ", replaceCost=" + replaceCost + ", rating=" + rating + ", specialFeat=" + specialFeat + ", cast="
+				+ cast + "]";
 	}
+
+	
 
 }

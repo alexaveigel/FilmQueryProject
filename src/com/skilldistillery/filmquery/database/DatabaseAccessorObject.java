@@ -142,9 +142,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				double repCost = rs.getDouble("replacement_cost");
 				String rating = rs.getString("rating");
 				String features = rs.getString("special_features");
-				Film film = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
-						features);
-				films.add(film);
+//				List<Actor> cast = rs.getString()
+//				Film film = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
+//						features, cast);
+//				films.add(film);
 			}
 			rs.close();
 			stmt.close();
