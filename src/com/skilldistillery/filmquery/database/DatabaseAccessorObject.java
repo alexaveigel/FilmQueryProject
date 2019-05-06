@@ -39,6 +39,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 			conn.close();
 			if (film == null) {
+				System.out.println("No such film id, please try again.");
 				return film;
 			}
 			return film;
@@ -81,7 +82,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (films.size() > 0) {
 				return films;
 			} else {
-
+				System.out.println("No match was found, please try again.");
 				return films;
 			}
 
