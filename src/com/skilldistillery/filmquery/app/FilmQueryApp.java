@@ -42,14 +42,22 @@ public class FilmQueryApp {
 			case 1:
 				System.out.println("Please enter an id number-->");
 				int filmId = sc.nextInt();
-				sc.hasNextLine();
+				sc.nextLine();
+				if(db.findFilmById(filmId) != null) {
 				System.out.println(db.findFilmById(filmId));
+				} else {
+					System.out.println("No such film id, please try again.");
+				}
 				break;
 			case 2:
 				System.out.println("Please enter an keyword-->");
 				String keyword = sc.next();
-				sc.hasNextLine();
-				System.out.println(db.findFilmByKeyword(keyword));
+				sc.nextLine();
+				if(db.findFilmByKeyword(keyword).isEmpty()) {
+					System.out.println("No match was found, please try again.");
+				}else {
+					System.out.println(db.findFilmByKeyword(keyword));
+				}
 				break;
 			case 3:
 				System.exit(0);
